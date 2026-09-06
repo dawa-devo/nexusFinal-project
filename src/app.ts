@@ -32,6 +32,12 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'RESTful API for KnowledgeHub Question & Answer Platform',
     },
+    servers: [
+      {
+        url: 'http://localhost:5000/api/v1',
+        description: 'Development Server',
+      },
+    ],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -42,7 +48,8 @@ const swaggerOptions = {
       },
     },
   },
-  apis: ['./src/routes/*.ts'],
+  // Updated apis path to scan both routes and controllers for swagger comments
+  apis: ['./src/routes/*.ts', './src/controllers/*.ts'],
 };
 
 const swaggerSpecs = swaggerJsdoc(swaggerOptions);
